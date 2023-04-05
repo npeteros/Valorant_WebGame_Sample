@@ -1,0 +1,111 @@
+<?php ob_start(); session_start(); ?>
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+    <?php
+        if(defined('TITLE')) {
+            print TITLE;
+        } else {
+            print 'VALORANT';
+        }
+    ?>
+</title>
+<link href="css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<?php
+    if(defined('LOBBY')) {
+        switch (LOBBY) {
+            case 1:
+                print '<style>
+                            body {
+                            background-image: url("img/lobby.gif");
+                                background-repeat: no-repeat;
+                                background-size: cover;
+                            }
+                        </style>';
+                break;
+            
+            case 2:
+                print '<style>
+                            body {
+                                background-image: url("img/waiting-room.webp");
+                                background-repeat: no-repeat;
+                                background-size: cover;
+                            }
+                            .valorant-form{
+                                background: rgb(204, 204, 204);
+                                background: rgba(204, 204, 204, 0.5);
+                                padding: 20px;
+                                margin-top: 130px;
+                                color: white;
+                            }
+                        </style>';                
+                break;
+            case 3:
+                print '<style>
+                            body {
+                                background-image: url("img/career.webp");
+                                background-repeat: no-repeat;
+                                background-size: cover;
+                            }
+                            .valorant-form{
+                                background: rgb(204, 204, 204);
+                                background: rgba(204, 204, 204, 0.5);
+                                padding: 20px;
+                                margin-top: 130px;
+                                color: white;
+                            }
+                        </style>';
+                break;
+            case 4:
+                print '<style>
+                            body {
+                                background-image: url("img/agents.webp");
+                                background-repeat: no-repeat;
+                                background-size: cover;
+                            }
+                            .valorant-form{
+                                background: rgb(204, 204, 204);
+                                background: rgba(204, 204, 204, 0.5);
+                                padding: 20px;
+                                margin-top: 50px;
+                                color: white;
+                            }
+                        </style>';
+                break;
+            case 5:
+                include('includes/mysql_connect.php');
+                $game_id = $_GET['game_id'];
+                $query = "SELECT * FROM games WHERE id = '$game_id'";
+                if($r = mysqli_query($dbc, $query)) {
+                    if($row = mysqli_fetch_array($r)) {
+                        $map_id = $row['map_id'];
+                    }
+                }
+
+                $query = "SELECT * FROM maps WHERE id = '$map_id'";
+                if($r = mysqli_query($dbc, $query)) {
+                    if($row = mysqli_fetch_array($r)) {
+                        $img_loc = $row['img_loc'];
+                    }
+                }
+                print '<style>
+                    body {
+                        background-image: url(' . $img_loc . ');
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                    }
+                </style>';
+                break;
+            default:
+                break;
+        }
+        
+    } else {
+        print '<link rel="stylesheet" href="css/styles.css">';
+    }
+?>
+<link rel="icon" type="image/x-icon" href="img/favicon.ico">
+</head>
+<body>
