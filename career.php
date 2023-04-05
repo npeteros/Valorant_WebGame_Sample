@@ -64,20 +64,28 @@
                 ?>
             </div>
             <div class="col valorant-form">
-                <p><b>MMR</b></p>
+                <p>
+                    <b>MMR</b>
+                </p>
                 <?php
-                if ($losses > 0 && $level >= 20){
-                    print floor($matchmaking_rating);
-                } else {
+                    if ($losses > 0 && $level >= 20){
+                        print floor($matchmaking_rating);
+                    } else {
                 ?>
-                <p><h4>LOCKED</h4></p>
+                <p>
+                    <h4>LOCKED</h4>
+                </p>
                 <?php
-                }
+                    }
                 ?>
             </div>
             <div class="col valorant-form">
                 <b>LEVEL</b>
-                <p><h4><?php print $level; ?></h4></p>
+                <p>
+                    <h4>
+                        <?php print $level; ?>
+                    </h4>
+                </p>
             </div>
         </div>
     </div>
@@ -86,15 +94,27 @@
         <div class="row">
             <div class="col valorant-form">
                 <b>WINS</b>
-                <p><h4><?php print $wins; ?></h4></p>
+                <p>
+                    <h4>
+                        <?php print $wins; ?>
+                    </h4>
+                </p>
             </div>
             <div class="col valorant-form">
                 <b>LOSSES</b>
-                <p><h4><?php print $losses; ?></h4></p>
+                <p>
+                    <h4>
+                        <?php print $losses; ?>
+                    </h4>
+                </p>
             </div>
             <div class="col valorant-form">
                 <b>DRAWS</b>
-                <p><h4><?php print $draws; ?></h4></p>
+                <p>
+                    <h4>
+                        <?php print $draws; ?>
+                    </h4>
+                </p>
             </div>
         </div>
     </div>
