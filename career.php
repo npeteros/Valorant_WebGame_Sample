@@ -12,6 +12,7 @@
     $query = "SELECT * FROM accounts WHERE id = '$id'";
     $user = mysqli_fetch_array(mysqli_query($dbc, $query));
 
+    $rank_id = null;
     $user_rank = $user['rank_id'];
     $wins = $user['wins'];
     $losses = $user['losses'];
@@ -41,7 +42,7 @@
                                 $user_rank = $rank_id;
                             }
                         }
-
+                        
                         mysqli_query($dbc, "UPDATE accounts SET rank_id = '$rank_id' WHERE id ='$id'");
                     }
                     

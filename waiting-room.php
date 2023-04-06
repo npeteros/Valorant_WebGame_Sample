@@ -27,6 +27,8 @@
                             $r = mysqli_query($dbc, $query);
                             $rows = mysqli_num_rows($r);
 
+                            $player_list = array();
+
                             $i = 0;
                             if($rows > 1) {
                                 while ($row = mysqli_fetch_array($r)) {
